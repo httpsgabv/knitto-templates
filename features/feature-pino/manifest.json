@@ -1,0 +1,39 @@
+{
+  "name": "pino",
+  "displayName": "Pino Logging",
+  "version": "1.0.0",
+  "supports": {
+    "kits": [
+      "nest-api"
+    ],
+    "frameworks": [
+      "nestjs"
+    ]
+  },
+  "requires": [],
+  "conflictsWith": [],
+  "dependencies": {
+    "nestjs-pino": "^4.0.0",
+    "pino": "^9.0.0"
+  },
+  "devDependencies": {
+    "pino-pretty": "^13.0.0"
+  },
+  "scripts": {},
+  "env": {
+    "LOG_LEVEL": "debug"
+  },
+  "transforms": [
+    {
+      "type": "nest.addModuleImport",
+      "file": "src/app.module.ts",
+      "moduleClassName": "AppModule",
+      "importedName": "LoggerModule",
+      "importPath": "./infra/logger/logger.module",
+      "targetArrayProperty": "imports"
+    }
+  ],
+  "instructions": [
+    "Pino logging was added through nestjs-pino."
+  ]
+}
