@@ -1,0 +1,13 @@
+{
+  "name": "feature-pino",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "nestjs-pino": "^4.6.1"
+  }
+}
