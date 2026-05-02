@@ -19,18 +19,6 @@
       "strategy": "safe-merge"
     },
     {
-      "type": "append-env",
-      "source": ".env.example",
-      "target": ".env.example",
-      "strategy": "append-missing"
-    },
-    {
-      "type": "append-readme",
-      "source": "README.knitto.md",
-      "target": "README.md",
-      "heading": "Pino Logging"
-    },
-    {
       "type": "copy-file",
       "source": "src/logger/logger.module.ts",
       "target": "src/logger/logger.module.ts",
