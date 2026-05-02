@@ -20,8 +20,8 @@
     },
     {
       "type": "copy-file",
-      "source": "src/logger/logger.module.ts",
-      "target": "src/logger/logger.module.ts",
+      "source": "src/infra/logger/logger.module.ts",
+      "target": "src/infra/logger/logger.module.ts",
       "renderVariables": true,
       "overwrite": false
     },
@@ -30,7 +30,7 @@
       "target": "src/app.module.ts",
       "import": {
         "named": "LoggerModule",
-        "from": "./logger/logger.module"
+        "from": "./infra/logger/logger.module"
       },
       "moduleName": "LoggerModule"
     }
