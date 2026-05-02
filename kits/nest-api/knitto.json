@@ -11,5 +11,9 @@
     "include": ["**/*"],
     "exclude": ["knitto.json"]
   },
-  "operations": []
+  "operations": [
+    {
+      "type": "add-all"
+    }
+  ]
 }
