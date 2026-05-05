@@ -1,1 +1,0 @@
-{"version":3,"file":"global-prefix.js","sourceRoot":"","sources":["../../../src/setup/global-prefix.ts"],"names":[],"mappings":";;;AAKA,MAAa,YAAY;IAEJ;IACA;IAFnB,YACmB,GAAsB,EACtB,GAAe;QADf,QAAG,GAAH,GAAG,CAAmB;QACtB,QAAG,GAAH,GAAG,CAAY;IAC/B,CAAC;IAEJ,KAAK;QACH,IAAI,CAAC,GAAG,CAAC,eAAe,CAAC,IAAI,CAAC,GAAG,CAAC,GAAG,CAAC,eAAe,CAAC,CAAC,CAAC;IAC1D,CAAC;CACF;AATD,oCASC"}
