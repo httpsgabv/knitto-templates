@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import type { Env } from './env';
 import { ConfigService } from '@nestjs/config';
+import type { IEnvService } from './interfaces/IEnvService';
 
 @Injectable()
-export class EnvService {
+export class EnvService implements IEnvService {
   constructor(private readonly configService: ConfigService<Env, true>) {}
 
   get<T extends keyof Env>(key: T): Env[T] {

@@ -1,0 +1,37 @@
+import type { Env } from '@infra/env/env';
+import type { IEnvService } from '@infra/env/interfaces/IEnvService';
+
+export class FakeEnvService implements IEnvService {
+  private values: Env = {
+    APP_NAME: 'test-app',
+    APP_VERSION: '1.0.0',
+    NODE_ENV: 'test',
+    HOST: '0.0.0.0',
+    PORT: 3333,
+    GLOBAL_PREFIX: 'api',
+    CORS_ORIGINS: '',
+  };
+
+  set(key: keyof Env, value: Env[keyof Env]): void {
+    (this.values as Record<keyof Env, Env[keyof Env]>)[key] = value;
+  }
+
+  get<T extends keyof Env>(key: T): Env[T] {
+    return this.values[key];
+  }
+
+  getCorsOrigins(): string[] {
+    return this.get('CORS_ORIGINS')
+      .split(',')
+      .map((origin) => origin.trim())
+      .filter(Boolean);
+  }
+
+  isProduction(): boolean {
+    return this.get('NODE_ENV') === 'production';
+  }
+
+  isDevelopment(): boolean {
+    return this.get('NODE_ENV') === 'development';
+  }
+}

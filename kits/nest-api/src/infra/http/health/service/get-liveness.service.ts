@@ -1,10 +1,10 @@
-import { EnvService } from '@infra/env/env.service';
 import type { HealthResponse } from '../types/health.types';
 import { Injectable } from '@nestjs/common';
+import type { IEnvService } from '@infra/env/interfaces/IEnvService';
 
 @Injectable()
 export class GetLivenessService {
-  constructor(private readonly envService: EnvService) {}
+  constructor(private readonly envService: IEnvService) {}
 
   execute(): HealthResponse {
     return {

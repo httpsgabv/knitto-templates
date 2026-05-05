@@ -5,7 +5,7 @@ import {
   type ArgumentsHost,
   type ExceptionFilter,
 } from '@nestjs/common';
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import type { RequestWithId } from '../middleware/request-id.middleware';
 import { REQUEST_ID_HEADER } from '../constants/request-id.constants';
 
