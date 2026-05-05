@@ -1,8 +1,8 @@
 import type { Env } from '@infra/env/env';
 
-export interface IEnvService {
-  get<T extends keyof Env>(key: T): Env[T];
-  getCorsOrigins(): string[];
-  isProduction(): boolean;
-  isDevelopment(): boolean;
+export abstract class IEnvService {
+  abstract get<T extends keyof Env>(key: T): Env[T];
+  abstract getCorsOrigins(): string[];
+  abstract isProduction(): boolean;
+  abstract isDevelopment(): boolean;
 }

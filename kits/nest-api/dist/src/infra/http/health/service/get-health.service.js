@@ -1,0 +1,36 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.GetHealthService = void 0;
+const common_1 = require("@nestjs/common");
+const IEnvService_1 = require("../../../env/interfaces/IEnvService");
+let GetHealthService = class GetHealthService {
+    envService;
+    constructor(envService) {
+        this.envService = envService;
+    }
+    execute() {
+        return {
+            status: 'ok',
+            service: this.envService.get('APP_NAME'),
+            version: this.envService.get('APP_VERSION'),
+            environment: this.envService.get('NODE_ENV'),
+            uptime: Math.floor(process.uptime()),
+            timestamp: new Date().toISOString(),
+        };
+    }
+};
+exports.GetHealthService = GetHealthService;
+exports.GetHealthService = GetHealthService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [IEnvService_1.IEnvService])
+], GetHealthService);
+//# sourceMappingURL=get-health.service.js.map
