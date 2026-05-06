@@ -49,7 +49,7 @@
         "arguments": [
           {
             "kind": "call",
-            "calee": {
+            "callee": {
               "kind": "member",
               "object": "app",
               "property": "get"
