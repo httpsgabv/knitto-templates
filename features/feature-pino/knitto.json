@@ -39,7 +39,30 @@
       "target": "src/infra/main.ts",
       "named": "Logger",
       "from": "nestjs-pino"
+    },
+    {
+      "type": "ast.nest.add-bootstrap-call",
+      "target": "src/infra/main.ts",
+      "appVar": "app",
+      "call": {
+        "method": "useLogger",
+        "arguments": [
+          {
+            "kind": "call",
+            "calee": {
+              "kind": "member",
+              "object": "app",
+              "property": "get"
+            },
+            "arguments": [
+              {
+                "kind": "identifier",
+                "name": "Logger"
+              }
+            ]
+          }
+        ]
+      }
     }
-    
   ]
 }
