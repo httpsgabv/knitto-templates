@@ -30,7 +30,7 @@
       "target": "src/infra/app.module.ts",
       "import": {
         "named": "LoggerModule",
-        "from": "./infra/logger/logger.module"
+        "from": "src/infra/logger/logger.module"
       },
       "moduleName": "LoggerModule"
     },
