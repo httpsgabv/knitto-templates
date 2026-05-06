@@ -27,7 +27,7 @@
     },
     {
       "type": "ast.nest.add-module-import",
-      "target": "src/app.module.ts",
+      "target": "src/infra/app.module.ts",
       "import": {
         "named": "LoggerModule",
         "from": "./infra/logger/logger.module"
@@ -36,9 +36,10 @@
     },
     {
       "type": "ast.add-named-import",
-      "target": "src/main.ts",
+      "target": "src/infra/main.ts",
       "named": "Logger",
       "from": "nestjs-pino"
     }
+    
   ]
 }
