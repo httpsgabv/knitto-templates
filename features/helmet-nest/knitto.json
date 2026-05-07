@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "type": "feature",
+  "slug": "helmet-nest",
+  "name": "Helmet (NestJS)",
+  "description": "Add a basic Helmet setup.",
+  "supports": ["nestjs"],
+  "requires": [],
+  "conflictsWith": [],
+  "files": {
+    "include": ["**/*"],
+    "exclude": ["knitto.json"]
+  },
+  "operations": [
+    {
+      "type": "merge-package-json",
+      "source": "package.json",
+      "target": "package.json",
+      "strategy": "safe-merge"
+    },
+    {
+      "type": "copy-file",
+      "source": "src/helmet.ts",
+      "target": "src/setup/helmet.ts",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "ast.add-named-import",
+      "target": "src/infra/main.ts",
+      "named": "Helmet",
+      "from": "src/setup/helmet"
+    },
+    {
+      "type": "ast.nest.add-bootstrap-variable",
+      "target": "src/infra/main.ts",
+      "declarationKind": "const",
+      "name": "helmet",
+      "initializer": {
+        "kind": "new",
+        "constructor": {
+          "kind": "identifier",
+          "name": "Helmet"
+        },
+        "arguments": [
+          {
+            "kind": "identifier",
+            "name": "app"
+          },
+          {
+            "kind": "identifier",
+            "name": "env"
+          }
+        ]
+      }
+    },
+    {
+      "type": "ast.nest.add-bootstrap-method-call",
+      "target": "src/infra/main.ts",
+      "receiver": {
+        "kind": "identifier",
+        "name": "helmet"
+      },
+      "method": "setup",
+      "arguments": []
+    }
+  ]
+}
