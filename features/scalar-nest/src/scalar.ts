@@ -11,8 +11,8 @@ export class Scalar {
 
   setup() {
     const openApiConfig = new DocumentBuilder()
-      .setTitle(this.env.get('OPENAPI_APP_NAME'))
-      .setDescription(this.env.get('OPENAPI_APP_DESCRIPTION'))
+      .setTitle("teste")
+      .setDescription("teste")
       .setVersion(this.env.get('APP_VERSION'))
       .addBearerAuth()
       .build();

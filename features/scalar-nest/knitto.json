@@ -26,6 +26,12 @@
       "overwrite": false
     },
     {
+      "type": "append-env",
+      "source": ".env",
+      "target": ".env",
+      "strategy": "append-missing"
+    },
+    {
       "type": "ast.add-named-import",
       "target": "src/infra/main.ts",
       "named": "Scalar",
