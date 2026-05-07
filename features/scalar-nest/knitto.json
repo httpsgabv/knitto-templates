@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "type": "feature",
+  "slug": "scalar-nest",
+  "name": "Scalar (NestJS)",
+  "description": "Add a basic Scalar OpenAPI setup.",
+  "supports": ["nestjs"],
+  "requires": [],
+  "conflictsWith": [],
+  "files": {
+    "include": ["**/*"],
+    "exclude": ["knitto.json"]
+  },
+  "operations": [
+    {
+      "type": "merge-package-json",
+      "source": "package.json",
+      "target": "package.json",
+      "strategy": "safe-merge"
+    },
+    {
+      "type": "copy-file",
+      "source": "src/scalar.ts",
+      "target": "src/setup/scalar.ts",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "ast.add-named-import",
+      "target": "src/infra/main.ts",
+      "named": "Scalar",
+      "from": "src/setup/scalar"
+    },
+    {
+      "type": "ast.nest.add-bootstrap-variable",
+      "target": "src/infra/main.ts",
+      "declarationKind": "const",
+      "name": "scalar",
+      "initializer": {
+        "kind": "new",
+        "constructor": {
+          "kind": "identifier",
+          "name": "Scalar"
+        },
+        "arguments": [
+          {
+            "kind": "identifier",
+            "name": "app"
+          },
+          {
+            "kind": "identifier",
+            "name": "env"
+          }
+        ]
+      }
+    },
+    {
+      "type": "ast.nest.add-bootstrap-call",
+      "target": "src/infra/main.ts",
+      "appVar": "scalar",
+      "call": {
+        "method": "setup"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "scalar-nest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@nestjs/swagger": "^11.4.2",
+    "@scalar/nestjs-api-reference": "^1.1.14"
+  }
+}
