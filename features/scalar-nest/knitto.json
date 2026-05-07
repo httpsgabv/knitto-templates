@@ -67,7 +67,8 @@
         "kind": "identifier",
         "name": "scalar"
       },
-      "method": "setup"
+      "method": "setup",
+      "arguments": []
     }
   ]
 }
