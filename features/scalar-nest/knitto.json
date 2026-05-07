@@ -63,7 +63,10 @@
     {
       "type": "ast.nest.add-bootstrap-method-call",
       "target": "src/infra/main.ts",
-      "receiver": "scalar",
+      "receiver": {
+        "kind": "identifier",
+        "name": "scalar"
+      },
       "method": "setup"
     }
   ]
