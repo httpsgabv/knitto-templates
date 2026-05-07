@@ -16,7 +16,8 @@
         "scalar-nest",
         "helmet-nest",
         "throttler-nest",
-        "husky-git-hooks"
+        "husky-git-hooks",
+        "prisma-postgres"
       ]
     }
   ],
@@ -99,6 +100,20 @@
         "type": "github",
         "repo": "httpsgabv/knitto-templates",
         "name": "husky-git-hooks",
+        "path": "/features/"
+      },
+      "supports": ["nestjs"],
+      "requires": [],
+      "conflictsWith": []
+    },
+    {
+      "slug": "prisma-postgres",
+      "name": "Prisma Postgres",
+      "description": "Add Prisma with Postgres setup.",
+      "source": {
+        "type": "github",
+        "repo": "httpsgabv/knitto-templates",
+        "name": "prisma-postgres",
         "path": "/features/"
       },
       "supports": ["nestjs"],
