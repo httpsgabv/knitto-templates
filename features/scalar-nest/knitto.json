@@ -61,12 +61,10 @@
       }
     },
     {
-      "type": "ast.nest.add-bootstrap-call",
+      "type": "ast.nest.add-bootstrap-method-call",
       "target": "src/infra/main.ts",
-      "appVar": "scalar",
-      "call": {
-        "method": "setup"
-      }
+      "receiver": "scalar",
+      "method": "setup"
     }
   ]
 }
