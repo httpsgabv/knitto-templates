@@ -1,0 +1,13 @@
+{
+  "name": "sentry-nest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@sentry/nestjs": "^10.51.0"
+  }
+}

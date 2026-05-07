@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "type": "feature",
+  "slug": "sentry-nest",
+  "name": "Sentry (NestJS)",
+  "description": "Add a basic Sentry setup for NestJS.",
+  "supports": ["nestjs"],
+  "requires": [],
+  "conflictsWith": [],
+  "files": {
+    "include": ["**/*"],
+    "exclude": ["knitto.json"]
+  },
+  "operations": [
+    {
+      "type": "merge-package-json",
+      "source": "package.json",
+      "target": "package.json",
+      "strategy": "safe-merge"
+    },
+    {
+      "type": "append-env",
+      "source": ".env",
+      "target": ".env",
+      "strategy": "append-missing"
+    },
+    {
+      "type": "copy-file",
+      "source": "src/infra/http/debug/sentry/controllers/debug-sentry.controller.ts",
+      "target": "src/infra/http/debug/sentry/controllers/debug-sentry.controller.ts",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "copy-file",
+      "source": "src/infra/http/debug/sentry/services/debug-sentry.service.ts",
+      "target": "src/infra/http/debug/sentry/services/debug-sentry.service.ts",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "copy-file",
+      "source": "src/infra/sentry/instrument.ts",
+      "target": "src/infra/sentry/instrument.ts",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "copy-file",
+      "source": "src/infra/sentry/sentry.module.ts",
+      "target": "src/infra/sentry/sentry.module.ts",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "ast.nest.add-module-import",
+      "target": "src/infra/app.module.ts",
+      "import": {
+        "named": "SentryModule",
+        "from": "src/infra/sentry/sentry.module"
+      },
+      "moduleName": "SentryModule"
+    },
+    {
+      "type": "ast.add-side-effect-import",
+      "target": "src/infra/main.ts",
+      "from": "src/infra/sentry/instrument.ts",
+      "position": "top"
+    }
+  ]
+}
