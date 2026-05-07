@@ -64,7 +64,7 @@
     {
       "type": "ast.add-side-effect-import",
       "target": "src/infra/main.ts",
-      "from": "src/infra/sentry/instrument.ts",
+      "from": "src/infra/sentry/instrument",
       "position": "top"
     }
   ]
