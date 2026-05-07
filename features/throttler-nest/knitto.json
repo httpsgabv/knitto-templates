@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "type": "feature",
+  "slug": "throttler-nest",
+  "name": "Throttler (NestJS)",
+  "description": "Add a basic throttler setup for NestJS.",
+  "supports": ["nestjs"],
+  "requires": [],
+  "conflictsWith": [],
+  "files": {
+    "include": ["**/*"],
+    "exclude": ["knitto.json"]
+  },
+  "operations": [
+    {
+      "type": "merge-package-json",
+      "source": "package.json",
+      "target": "package.json",
+      "strategy": "safe-merge"
+    },
+    {
+      "type": "append-env",
+      "source": ".env",
+      "target": ".env",
+      "strategy": "append-missing"
+    },
+    {
+      "type": "copy-file",
+      "source": "src/app-throttler.module.ts",
+      "target": "src/infra/throttler/app-throttler.module.ts",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "ast.nest.add-module-import",
+      "target": "src/infra/app.module.ts",
+      "import": {
+        "named": "AppThrottlerModule",
+        "from": "src/infra/throttler/app-throttler.module"
+      },
+      "moduleName": "AppThrottlerModule"
+    }
+  ]
+}
