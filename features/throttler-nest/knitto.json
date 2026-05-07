@@ -19,12 +19,6 @@
       "strategy": "safe-merge"
     },
     {
-      "type": "append-env",
-      "source": ".env",
-      "target": ".env",
-      "strategy": "append-missing"
-    },
-    {
       "type": "copy-file",
       "source": "src/app-throttler.module.ts",
       "target": "src/infra/throttler/app-throttler.module.ts",
