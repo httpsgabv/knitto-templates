@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "type": "feature",
+  "slug": "husky-git-hooks",
+  "name": "Husky Git Hooks",
+  "description": "Add Husky pre-commit and pre-push hooks for linting, typechecking, and tests.",
+  "supports": ["nestjs"],
+  "requires": [],
+  "conflictsWith": [],
+  "files": {
+    "include": ["**/*"],
+    "exclude": ["knitto.json"]
+  },
+  "operations": [
+    {
+      "type": "merge-package-json",
+      "source": "package.json",
+      "target": "package.json",
+      "strategy": "safe-merge"
+    },
+    {
+      "type": "copy-file",
+      "source": ".husky/pre-commit",
+      "target": ".husky/pre-commit",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "copy-file",
+      "source": ".husky/pre-push",
+      "target": ".husky/pre-push",
+      "renderVariables": true,
+      "overwrite": false
+    }
+  ]
+}
