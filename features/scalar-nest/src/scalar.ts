@@ -1,4 +1,4 @@
-import { EnvService } from '@infra/env/env.service';
+import { EnvService } from '#infra/env/env.service.js';
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { INestApplication } from '@nestjs/common';
 import { apiReference } from '@scalar/nestjs-api-reference';
@@ -11,8 +11,8 @@ export class Scalar {
 
   setup() {
     const openApiConfig = new DocumentBuilder()
-      .setTitle("teste")
-      .setDescription("teste")
+      .setTitle(this.env.get('OPENAPI_APP_NAME'))
+      .setDescription(this.env.get('OPENAPI_APP_DESCRIPTION'))
       .setVersion(this.env.get('APP_VERSION'))
       .addBearerAuth()
       .build();

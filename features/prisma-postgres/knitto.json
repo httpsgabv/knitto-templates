@@ -27,6 +27,13 @@
     },
     {
       "type": "copy-file",
+      "source": "src/infra/database/prisma/prisma.client.ts",
+      "target": "src/infra/database/prisma/prisma.client.ts",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "copy-file",
       "source": "src/infra/database/database.module.ts",
       "target": "src/infra/database/database.module.ts",
       "renderVariables": true,

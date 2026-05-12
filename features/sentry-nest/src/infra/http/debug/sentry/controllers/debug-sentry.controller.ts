@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { DebugSentryService } from '../services/debug-sentry.service'
+import { DebugSentryService } from '#infra/debug/sentry/services/debug-sentry.service.js';
 
 @Controller({
   path: 'debug-sentry',

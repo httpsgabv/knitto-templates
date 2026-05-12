@@ -1,29 +1,34 @@
 import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
-import { minutes, seconds, ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import {
+  minutes,
+  seconds,
+  ThrottlerGuard,
+  ThrottlerModule,
+} from '@nestjs/throttler';
 
 @Module({
   imports: [
     ThrottlerModule.forRoot({
       throttlers: [
         {
-          name: "short",
+          name: 'short',
           ttl: seconds(1),
-          limit: 10
+          limit: 10,
         },
         {
-          name: "default",
+          name: 'default',
           ttl: minutes(1),
-          limit: 100
-        }
-      ]
-    })
+          limit: 100,
+        },
+      ],
+    }),
   ],
   providers: [
     {
       provide: APP_GUARD,
-      useClass: ThrottlerGuard
-    }
-  ]
+      useClass: ThrottlerGuard,
+    },
+  ],
 })
 export class AppThrottlerModule {}

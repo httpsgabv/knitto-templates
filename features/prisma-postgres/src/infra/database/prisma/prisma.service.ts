@@ -1,8 +1,9 @@
 import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import { PrismaPg } from '@prisma/adapter-pg';
-import { EnvService } from '@infra/env/env.service';
+import { EnvService } from '#infra/env/env.service.js';
 
-import { PrismaClient } from '../../../../generated/prisma/client'
+import { PrismaClient } from '#generated/prisma/client.js'
+import { prisma } from './prisma.client.js';
 
 function getDatabaseSchema(url: string) {
   return new URL(url).searchParams.get('schema') ?? undefined;
@@ -25,6 +26,10 @@ export class PrismaService
           : [],
       adapter,
     });
+  }
+
+  get db() {
+    return prisma;
   }
 
   async onModuleInit() {

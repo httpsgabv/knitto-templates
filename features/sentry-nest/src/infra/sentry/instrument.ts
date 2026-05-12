@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import * as Sentry from '@sentry/nestjs'
 
 const sentryEnabled = process.env.SENTRY_ENABLED === 'true' && Boolean(process.env.SENTRY_DSN)

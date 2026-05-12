@@ -1,5 +1,5 @@
 import { INestApplication } from '@nestjs/common';
-import { EnvService } from '@infra/env/env.service';
+import { EnvService } from '#infra/env/env.service.js';
 import helmet from 'helmet';
 
 export class Helmet {
