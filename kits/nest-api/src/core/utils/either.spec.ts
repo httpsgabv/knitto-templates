@@ -1,4 +1,4 @@
-import { Either, Failure, Success, failure, success } from './either';
+import { Either, Failure, Success, failure, success } from './either.js';
 
 function doSomething(shouldSuccess: boolean): Either<string, string> {
   if (shouldSuccess) {

@@ -3,12 +3,12 @@ import {
   type MiddlewareConsumer,
   type NestModule,
 } from '@nestjs/common';
-import { EnvModule } from './env/env.module';
-import { EnvService } from './env/env.service';
-import { ValidationModule } from 'src/common/validation/validation.module';
-import { FiltersModule } from 'src/common/filters/filters.module';
-import { RequestIdMiddleware } from 'src/common/middleware/request-id.middleware';
-import { HealthModule } from './http/health/health.module';
+import { EnvModule } from './env/env.module.js';
+import { EnvService } from './env/env.service.js';
+import { ValidationModule } from '#common/validation/validation.module.js';
+import { FiltersModule } from '#common/filters/filters.module.js';
+import { RequestIdMiddleware } from '#common/middleware/request-id.middleware.js';
+import { HealthModule } from './health/health.module.js';
 
 @Module({
   imports: [ValidationModule, EnvModule, FiltersModule, HealthModule],

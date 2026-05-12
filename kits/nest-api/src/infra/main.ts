@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { Cors } from 'src/setup/cors';
-import { EnvService } from './env/env.service';
-import { GlobalPrefix } from 'src/setup/global-prefix';
+import { AppModule } from './app.module.js';
+import { Cors } from '#setup/cors.js';
+import { EnvService } from '#infra/env/env.service.js';
+import { GlobalPrefix } from '#setup/global-prefix.js';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

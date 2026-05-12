@@ -1,6 +1,6 @@
-import type { HealthResponse } from '../types/health.types';
+import type { HealthResponse } from '../types/health.types.js';
 import { Injectable } from '@nestjs/common';
-import { IEnvService } from '@infra/env/interfaces/IEnvService';
+import { IEnvService } from '#infra/env/interfaces/IEnvService.js';
 
 @Injectable()
 export class GetLivenessService {

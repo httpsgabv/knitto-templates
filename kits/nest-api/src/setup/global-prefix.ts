@@ -1,4 +1,4 @@
-import type { EnvService } from '@infra/env/env.service';
+import type { EnvService } from '#infra/env/env.service.js';
 import type { INestApplication } from '@nestjs/common';
 
 type GlobalPrefixSetup = Pick<INestApplication, 'setGlobalPrefix'>;

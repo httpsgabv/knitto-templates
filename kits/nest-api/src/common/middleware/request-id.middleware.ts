@@ -2,7 +2,7 @@ import { Injectable, type NestMiddleware } from '@nestjs/common';
 
 import { randomUUID } from 'crypto';
 import type { NextFunction, Request, Response } from 'express';
-import { REQUEST_ID_HEADER } from '../constants/request-id.constants';
+import { REQUEST_ID_HEADER } from '#common/constants/request-id.constants.js';
 
 export interface RequestWithId extends Request {
   requestId: string;

@@ -1,4 +1,5 @@
 import {
+  Catch,
   HttpException,
   HttpStatus,
   Logger,
@@ -6,8 +7,8 @@ import {
   type ExceptionFilter,
 } from '@nestjs/common';
 import { Response } from 'express';
-import type { RequestWithId } from '../middleware/request-id.middleware';
-import { REQUEST_ID_HEADER } from '../constants/request-id.constants';
+import type { RequestWithId } from '#common/middleware/request-id.middleware.js';
+import { buildErrorResponse } from './build-error-response.js';
 
 type ExceptionResponseBody = {
   code?: string;
@@ -36,6 +37,7 @@ function normalizeExceptionResponse(response: unknown): ExceptionResponseBody {
   };
 }
 
+@Catch()
 export class GlobalExceptionFilter implements ExceptionFilter {
   private readonly logger = new Logger(GlobalExceptionFilter.name);
 
@@ -57,32 +59,29 @@ export class GlobalExceptionFilter implements ExceptionFilter {
           message: 'Internal server error',
         };
 
-    const requestId =
-      request.requestId ??
-      request.headers[REQUEST_ID_HEADER]?.toString() ??
-      response.getHeader(REQUEST_ID_HEADER)?.toString();
-
-    const errorResponse = {
-      statusCode,
-      code: exceptionResponse.code ?? this.getDefaultErrorCode(statusCode),
-      message:
-        exceptionResponse.message ?? this.getDefaultErrorMessage(statusCode),
-      error: exceptionResponse.error,
-      issues: exceptionResponse.issues,
-      requestId,
-      timestamp: new Date().toISOString(),
-      path: request.originalUrl,
-      method: request.method,
-    };
-
     if (statusCode >= 500) {
+      const exceptionType =
+        exception instanceof Error
+          ? exception.constructor.name
+          : 'UnknownError';
+      const exceptionMessage =
+        exception instanceof Error ? exception.message : String(exception);
       this.logger.error(
-        `${request.method} ${request.originalUrl} failed with ${statusCode}`,
-        exception instanceof Error ? exception.stack : String(exception),
+        `${request.method} ${request.originalUrl} → ${statusCode} [${exceptionType}]: ${exceptionMessage}`,
+        exception instanceof Error ? exception.stack : undefined,
       );
     }
 
-    response.status(statusCode).json(errorResponse);
+    response.status(statusCode).json(
+      buildErrorResponse(request, response, {
+        statusCode,
+        code: exceptionResponse.code ?? this.getDefaultErrorCode(statusCode),
+        message:
+          exceptionResponse.message ?? this.getDefaultErrorMessage(statusCode),
+        error: exceptionResponse.error,
+        issues: exceptionResponse.issues,
+      }),
+    );
   }
 
   private getDefaultErrorCode(statusCode: number): string {

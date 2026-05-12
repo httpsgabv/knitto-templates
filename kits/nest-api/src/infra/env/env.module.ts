@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { EnvService } from './env.service';
+import { EnvService } from './env.service.js';
 import { ConfigModule } from '@nestjs/config';
-import { validateEnv } from './validate-env';
-import { IEnvService } from './interfaces/IEnvService';
+import { validateEnv } from './validate-env.js';
+import { IEnvService } from '#infra/env/interfaces/IEnvService.js';
 
 @Module({
   imports: [

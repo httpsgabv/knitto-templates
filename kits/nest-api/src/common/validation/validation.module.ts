@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { ZodSerializerInterceptor } from 'nestjs-zod';
-import { AppZodValidationPipe } from 'src/common/validation/pipes/app-zod-validation-pipe';
+import { AppZodValidationPipe } from '#common/validation/pipes/app-zod-validation-pipe.js';
 
 @Module({
   providers: [

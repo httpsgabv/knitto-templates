@@ -1,8 +1,12 @@
-import { BadRequestException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  type ArgumentMetadata,
+} from '@nestjs/common';
 import { createZodValidationPipe } from 'nestjs-zod';
 import { ZodError } from 'zod';
 
-export const AppZodValidationPipe = createZodValidationPipe({
+const BaseValidationPipe = createZodValidationPipe({
   createValidationException: (error: unknown) => {
     if (error instanceof ZodError) {
       return new BadRequestException({
@@ -23,3 +27,11 @@ export const AppZodValidationPipe = createZodValidationPipe({
   },
   strictSchemaDeclaration: true,
 });
+
+@Injectable()
+export class AppZodValidationPipe extends BaseValidationPipe {
+  override transform(value: unknown, metadata: ArgumentMetadata): unknown {
+    if (metadata.type === 'custom') return value;
+    return super.transform(value, metadata);
+  }
+}

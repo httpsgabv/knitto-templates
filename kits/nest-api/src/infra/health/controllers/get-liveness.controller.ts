@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
-import type { HealthResponse } from '../types/health.types';
-import { GetLivenessService } from '../service/get-liveness.service';
+import type { HealthResponse } from '../types/health.types.js';
+import { GetLivenessService } from '../service/get-liveness.service.js';
 
 @Controller({
   path: 'health',

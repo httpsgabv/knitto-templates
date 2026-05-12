@@ -1,5 +1,5 @@
-import type { Env } from '@infra/env/env';
-import type { IEnvService } from '@infra/env/interfaces/IEnvService';
+import type { Env } from '#infra/env/env.js';
+import type { IEnvService } from '#infra/env/interfaces/IEnvService.js';
 
 export class FakeEnvService implements IEnvService {
   private values: Env = {

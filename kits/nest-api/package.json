@@ -5,6 +5,7 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "type": "module",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -53,5 +54,15 @@
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0",
     "vitest": "^4.1.5"
+  },
+  "imports": {
+    "#infra/*": "./dist/src/infra/*",
+    "#setup/*": "./dist/src/setup/*",
+    "#common/*": "./dist/src/common/*",
+    "#domain/*": "./dist/src/domain/*",
+    "#core/*": "./dist/src/core/*",
+    "#lib/*": "./dist/src/lib/*",
+    "#test/*": "./test/*",
+    "#generated/*": "./dist/generated/*"
   }
 }

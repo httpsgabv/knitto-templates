@@ -1,5 +1,5 @@
-import { GetLivenessService } from './get-liveness.service';
-import { FakeEnvService } from '@test/env/fake-env.service';
+import { GetLivenessService } from './get-liveness.service.js';
+import { FakeEnvService } from '#test/env/fake-env.service.js';
 
 describe('GetLivenessService', () => {
   let fakeEnvService: FakeEnvService;

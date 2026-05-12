@@ -1,4 +1,4 @@
-import type { Env } from '@infra/env/env';
+import type { Env } from '#infra/env/env.js';
 
 export abstract class IEnvService {
   abstract get<T extends keyof Env>(key: T): Env[T];
