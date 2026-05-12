@@ -4,7 +4,7 @@ import { GetHealthService } from '../service/get-health.service.js';
 
 @Controller({
   path: 'health',
-  version: 'v1',
+  version: '1',
 })
 export class GetHealthController {
   constructor(private readonly getHealthService: GetHealthService) {}

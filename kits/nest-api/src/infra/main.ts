@@ -3,11 +3,15 @@ import { AppModule } from './app.module.js';
 import { Cors } from '#setup/cors.js';
 import { EnvService } from '#infra/env/env.service.js';
 import { GlobalPrefix } from '#setup/global-prefix.js';
+import { ApiVersioning } from '#setup/api-versioning.js';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const env = app.get(EnvService);
+
+  const apiVersioning = new ApiVersioning(app);
+  apiVersioning.setup();
 
   const cors = new Cors(app, env);
   cors.setup();

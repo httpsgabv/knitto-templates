@@ -3,7 +3,7 @@ import { DebugSentryService } from '#infra/debug/sentry/services/debug-sentry.se
 
 @Controller({
   path: 'debug-sentry',
-  version: 'v1',
+  version: '1',
 })
 export class DebugSentryController {
   constructor(private readonly debugSentryService: DebugSentryService) {}
