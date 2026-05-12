@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "type": "feature",
+  "slug": "prisma-postgres",
+  "name": "Prisma Postgres",
+  "description": "Add Prisma with Postgres setup.",
+  "supports": ["nestjs"],
+  "requires": [],
+  "conflictsWith": [],
+  "files": {
+    "include": ["**/*"],
+    "exclude": ["knitto.json"]
+  },
+  "operations": [
+    {
+      "type": "merge-package-json",
+      "source": "package.json",
+      "target": "package.json",
+      "strategy": "safe-merge"
+    },
+    {
+      "type": "copy-file",
+      "source": "src/infra/database/prisma/prisma.service.ts",
+      "target": "src/infra/database/prisma/prisma.service.ts",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "copy-file",
+      "source": "src/infra/database/database.module.ts",
+      "target": "src/infra/database/database.module.ts",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "copy-file",
+      "source": "prisma/schema.prisma",
+      "target": "prisma/schema.prisma",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "copy-file",
+      "source": "prisma.config.ts",
+      "target": "prisma.config.ts",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "copy-file",
+      "source": "docker-compose.yml",
+      "target": "docker-compose.yml",
+      "renderVariables": true,
+      "overwrite": false
+    },
+    {
+      "type": "append-env",
+      "source": ".env",
+      "target": ".env",
+      "strategy": "append-missing"
+    },
+    {
+      "type": "ast.nest.add-module-import",
+      "target": "src/infra/app.module.ts",
+      "import": {
+        "named": "DatabaseModule",
+        "from": "src/infra/database/database.module"
+      },
+      "moduleName": "DatabaseModule"
+    }
+  ]
+}
