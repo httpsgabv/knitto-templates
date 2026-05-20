@@ -10,6 +10,20 @@ export class FakeEnvService implements IEnvService {
     PORT: 3333,
     GLOBAL_PREFIX: 'api',
     CORS_ORIGINS: '',
+    SENTRY_DSN: '',
+    SENTRY_ENVIRONMENT: 'development',
+    SENTRY_TRACES_SAMPLE_RATE: 0,
+    SENTRY_ENABLED: '',
+    OPENAPI_APP_NAME: '',
+    OPENAPI_APP_DESCRIPTION: '',
+    DATABASE_URL: '',
+    POSTGRES_USER: '',
+    POSTGRES_PASSWORD: '',
+    POSTGRES_DB: '',
+    POSTGRES_PORT: 0,
+    LOG_PRISMA: '',
+    BETTER_AUTH_SECRET: '',
+    BETTER_AUTH_URL: '',
   };
 
   set(key: keyof Env, value: Env[keyof Env]): void {

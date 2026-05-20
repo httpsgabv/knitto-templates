@@ -1,7 +1,8 @@
 import { Controller, Get } from '@nestjs/common';
-import type { ReadinessResponse } from '../types/health.types.js';
-import { GetReadinessService } from '../service/get-readiness.service.js';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AllowAnonymous } from '@thallesp/nestjs-better-auth';
+import { GetReadinessService } from '../service/get-readiness.service.js';
+import type { ReadinessResponse } from '../types/health.types.js';
 
 @ApiTags('Health')
 @Controller({
@@ -12,6 +13,7 @@ export class GetReadinessController {
   constructor(private readonly getReadinessService: GetReadinessService) {}
 
   @Get('/ready')
+  @AllowAnonymous()
   @ApiOperation({
     summary: 'Readiness probe',
     description: 'Indicates whether the service is ready to handle requests.',

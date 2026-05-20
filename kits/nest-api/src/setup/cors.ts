@@ -13,6 +13,9 @@ export class Cors {
     const options = this.env.getCorsOrigins();
     this.app.enableCors({
       origin: options,
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      preflightContinue: false,
+      optionsSuccessStatus: 204,
       credentials: true,
     });
   }
