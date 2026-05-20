@@ -13,6 +13,13 @@ export abstract class Entity<Props> {
     this._id = id ?? new UniqueEntityID(id);
   }
 
+  public toJSON() {
+    return {
+      id: this._id.toString(),
+      ...(this.props as Record<string, unknown>),
+    };
+  }
+
   public equals(entity: Entity<unknown>) {
     if (entity === this) {
       return true;

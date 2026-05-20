@@ -16,6 +16,9 @@ export const envSchema = z.object({
   CORS_ORIGINS: z
     .string()
     .default('http://localhost:3000,http://localhost:5173'),
+
+  OPENAPI_APP_NAME: z.string().min(1),
+  OPENAPI_APP_DESCRIPTION: z.string().min(1),
 });
 
 export type Env = z.infer<typeof envSchema>;
