@@ -18,9 +18,10 @@ export type SignOutUseCaseResult = Either<
 >;
 
 @Injectable()
-export class SignOutUseCase
-  implements UseCase<SignOutUseCaseRequest, SignOutUseCaseResult>
-{
+export class SignOutUseCase implements UseCase<
+  SignOutUseCaseRequest,
+  SignOutUseCaseResult
+> {
   constructor(private readonly authIdentityProvider: AuthIdentityProvider) {}
 
   async execute(params: SignOutUseCaseRequest): Promise<SignOutUseCaseResult> {

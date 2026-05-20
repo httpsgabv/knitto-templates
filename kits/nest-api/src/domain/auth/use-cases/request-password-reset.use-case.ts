@@ -17,13 +17,10 @@ export type RequestPasswordResetUseCaseResult = Either<
 >;
 
 @Injectable()
-export class RequestPasswordResetUseCase
-  implements
-    UseCase<
-      RequestPasswordResetUseCaseRequest,
-      RequestPasswordResetUseCaseResult
-    >
-{
+export class RequestPasswordResetUseCase implements UseCase<
+  RequestPasswordResetUseCaseRequest,
+  RequestPasswordResetUseCaseResult
+> {
   constructor(private readonly authIdentityProvider: AuthIdentityProvider) {}
 
   async execute(

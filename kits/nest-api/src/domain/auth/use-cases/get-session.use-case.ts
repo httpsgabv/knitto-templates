@@ -28,9 +28,10 @@ export type GetSessionUseCaseResult = Either<
 >;
 
 @Injectable()
-export class GetSessionUseCase
-  implements UseCase<GetSessionUseCaseRequest, GetSessionUseCaseResult>
-{
+export class GetSessionUseCase implements UseCase<
+  GetSessionUseCaseRequest,
+  GetSessionUseCaseResult
+> {
   constructor(private readonly authIdentityProvider: AuthIdentityProvider) {}
 
   async execute(

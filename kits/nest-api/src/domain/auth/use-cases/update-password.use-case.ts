@@ -22,9 +22,10 @@ export type UpdatePasswordUseCaseResult = Either<
 >;
 
 @Injectable()
-export class UpdatePasswordUseCase
-  implements UseCase<UpdatePasswordUseCaseRequest, UpdatePasswordUseCaseResult>
-{
+export class UpdatePasswordUseCase implements UseCase<
+  UpdatePasswordUseCaseRequest,
+  UpdatePasswordUseCaseResult
+> {
   constructor(private readonly authIdentityProvider: AuthIdentityProvider) {}
 
   async execute(

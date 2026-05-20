@@ -19,9 +19,10 @@ export type ExportUserDataUseCaseResult = Either<
 >;
 
 @Injectable()
-export class ExportUserDataUseCase
-  implements UseCase<ExportUserDataUseCaseRequest, ExportUserDataUseCaseResult>
-{
+export class ExportUserDataUseCase implements UseCase<
+  ExportUserDataUseCaseRequest,
+  ExportUserDataUseCaseResult
+> {
   constructor(private readonly usersRepository: UsersRepository) {}
 
   async execute(

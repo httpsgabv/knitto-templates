@@ -45,7 +45,7 @@ export class SignOutController {
     @Res({ passthrough: true }) response: Response,
   ) {
     const result = await this.signOutUseCase.execute({
-      headers: req.headers as Record<string, string | string[] | undefined>,
+      headers: req.headers,
     });
 
     if (result.isFailure()) {

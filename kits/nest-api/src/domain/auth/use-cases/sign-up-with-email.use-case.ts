@@ -23,10 +23,10 @@ export type SignUpWithEmailUseCaseResult = Either<
 >;
 
 @Injectable()
-export class SignUpWithEmailUseCase
-  implements
-    UseCase<SignUpWithEmailUseCaseRequest, SignUpWithEmailUseCaseResult>
-{
+export class SignUpWithEmailUseCase implements UseCase<
+  SignUpWithEmailUseCaseRequest,
+  SignUpWithEmailUseCaseResult
+> {
   constructor(private readonly authIdentityProvider: AuthIdentityProvider) {}
 
   async execute(

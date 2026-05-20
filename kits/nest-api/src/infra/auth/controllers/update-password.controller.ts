@@ -62,7 +62,7 @@ export class UpdatePasswordController {
       currentPassword: body.currentPassword,
       newPassword: body.newPassword,
       revokeOtherSessions: body.revokeOtherSessions,
-      headers: req.headers as Record<string, string | string[] | undefined>,
+      headers: req.headers,
     });
 
     if (result.isFailure()) {
