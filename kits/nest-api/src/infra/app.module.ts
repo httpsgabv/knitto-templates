@@ -14,9 +14,6 @@ import { AppThrottlerModule } from '#infra/throttler/app-throttler.module.js';
 import { DatabaseModule } from '#infra/database/database.module.js';
 import { AuthModule } from '#infra/auth/auth.module.js';
 import { UsersModule } from '#infra/users/users.module.js';
-import { ProjectsModule } from './projects/projects.module.js';
-import { WildcardGroupsModule } from './wildcard-groups/wildcard-groups.module.js';
-import { PromptsModule } from './prompts/prompts.module.js';
 import { HealthModule } from './health/health.module.js';
 
 @Module({
@@ -31,9 +28,6 @@ import { HealthModule } from './health/health.module.js';
     DatabaseModule,
     AuthModule,
     UsersModule,
-    ProjectsModule,
-    WildcardGroupsModule,
-    PromptsModule,
   ],
   providers: [EnvService],
 })
